@@ -1,0 +1,123 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ece9e6, #ffffff);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+/* Form container */
+form {
+    background-color: #f8f8f8;
+    max-width: 100vw;
+    padding: 1em 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input field */
+input[type="url"] {
+    flex: 1 1;
+    min-width: 0;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="url"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Dropdown */
+select {
+    padding: 0.75em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Progress bar styling */
+progress {
+    width: 100%;
+    height: 20px;
+    appearance: none;
+    border-radius: 0.25em;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Wrap progress bar in the same container styling */
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100vw;
+    margin-top: 2em;
+}
+
+/* Mobile-friendly stacked layout */
+@media (max-width: 600px) {
+    form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    form label {
+        display: block;
+        margin-bottom: 0.25em;
+    }
+    input[type="url"],
+    select {
+        width: 100%;
+    }
+    button {
+        align-self: center; /* centers the download button */
+    }
+}

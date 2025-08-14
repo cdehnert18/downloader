@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>This is a title</title>
+    <meta charset="utf-8" />
+    <title>Downloader</title>
+    <link th:href="@{/main.css}" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        <p>Hello world!</p>
-    </div>
+    <main>
+        <form>
+            <label for="url">URL:</label>
+            <input
+                type="url"
+                name="url"
+                id="url"
+                placeholder="https://example.com"
+                pattern="https://.*"
+                size="50"
+                required />
+
+            <label for="format">Format:</label>
+            <select name="format" id="format-select">
+                <option value="mp3">MP3</option>
+                <option value="mp4">MP4</option>
+                <option value="wav">WAV</option>
+                <option value="m4a">M4A</option>
+                <option value="ogg">OGG</option>
+                <option value="whatsapp">WhatsApp</option>
+            </select>
+            <button>Download</button>
+        </form>
+        <div class="progress-container">
+            <progress id="file-download" max="100" value="0">0%</progress>
+        </div>
+    </main>
 </body>
 </html>
