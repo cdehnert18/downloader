@@ -27,11 +27,47 @@
                 <option value="ogg">OGG</option>
                 <option value="whatsapp">WhatsApp</option>
             </select>
-            <button>Download</button>
+            <button type="submit" value="submit">Download</button>
         </form>
         <div class="progress-container">
             <progress id="file-download" max="100" value="0">0%</progress>
         </div>
     </main>
 </body>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        
+        const url = document.getElementById("url").value;
+        const format = document.getElementById("format-select").value;
+        const progress = document.getElementById("file-download");
+
+        const eventSource = new EventSource(`/download/progress?url=${encodeURIComponent(url)}&format=${format}`);
+
+        // Handle progress updates (default "message" event)
+        eventSource.onmessage = function(event) {
+            progress.value = event.data;
+            progress.textContent = event.data + "%";
+        };
+
+        // Handle when the server sends the "done" event with the download URL
+        eventSource.addEventListener("done", function(event) {
+            const downloadUrl = event.data;
+            const link = document.createElement("a");
+            link.href = downloadUrl;
+            link.textContent = "Download your file";
+            link.download = ""; // prompts browser to save instead of navigate
+            document.body.appendChild(link);
+            eventSource.close();
+        });
+
+        // Handle connection errors
+        eventSource.onerror = function() {
+            console.error("SSE connection error");
+            eventSource.close();
+        };
+    });
+</script>
+
 </html>

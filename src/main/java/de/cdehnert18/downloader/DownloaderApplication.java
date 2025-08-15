@@ -9,5 +9,4 @@ public class DownloaderApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DownloaderApplication.class, args);
 	}
-
 }
